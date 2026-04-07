@@ -1,0 +1,2 @@
+abrir terminal na pagina do jogo e executar o seguinte
+python main.py
