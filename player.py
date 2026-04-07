@@ -11,12 +11,20 @@ class Player:
         self.avgScore += points
 
     def moveDisk(self, fromPine: Pine, toPine: Pine):
-        fromDisk = fromPine.popDisk()
-        toDisk = toPine.popDisk()
-        if (fromDisk.size < toDisk.size) or (toDisk.size == 0):
-            toPine.pushDisk(fromDisk)
-            fromPine.pushDisk(toDisk)
-        else:            
+        fromDisk = fromPine.top()
+
+        if fromDisk is None:
+            print("Torre de origem vazia!")
+            return False
+
+        toDisk = toPine.top()
+
+        # valida regra da Torre de Hanoi
+        if toDisk is None or fromDisk.tamanho < toDisk.tamanho:
+            toPine.push(fromPine.pop())
+            return True
+        else:
+            print("Movimento inválido!")
             return False
         
     def __str__(self):
