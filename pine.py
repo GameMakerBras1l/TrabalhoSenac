@@ -2,15 +2,22 @@ from disk import Disk
 from typing import List
 
 class Pine:
-    def __init__(self, stackedDisks: List[Disk]:
-        self.stackedDisks = stackedDisks
+    def __init__(self, name: str):
+        self.name = name
+        self.discos: List[Disk] = []
 
     def __str__(self):
-        return f"Pine with {len(self.stackedDisks)} disks"
+        return f"{self.name}: {[d.tamanho for d in self.discos]}"
     
-    def pushDisk(self, disk: Disk):
-        self.stackedDisks.append(disk)
+    def push(self, disk: Disk):
+        self.discos.append(disk)
     
-    def popDisk(self):
-        return self.stackedDisks.pop()
+    def pop(self):
+        if self.discos:
+            return self.discos.pop()
+        return None
 
+    def top(self):
+        if self.discos:
+            return self.discos[-1]
+        return None
